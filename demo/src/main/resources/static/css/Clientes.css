@@ -1,0 +1,43 @@
+
+.buscar{
+	width: 10%;
+}
+
+nav{
+	text-align: center;
+	padding: 1%;
+}
+
+#centrarTabla{
+	
+	text-align: center;
+	
+}
+
+#centrarTabla table{
+	
+	margin: 0 auto;
+text-align: left;
+	
+}
+
+#centrarBuscador {
+	text-align: center;
+	padding: 1%;
+}
+
+#btnBuscar{
+	margin-top: 1%;
+	margin-left: 22%;
+	
+}
+
+#agregar{
+	margin-top: 1%;
+	margin-left: 21%;
+	
+}
+
+form{
+margin: 2% 35% 2% 35%;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style>
+nav{
+	text-align: center;
+	padding: 1%;
+}
+#centrarTabla{
+	text-align: center;
+}
+
+#centrarTabla table{
+	margin: 0 auto;
+text-align: left;
+}
+th, td{
+text-align: center;
+}
+
+</style>
+</head>
+<body>
+<nav>
+		<a href="/Clientes" ><button type="button" class="btn btn-secondary btn-sm">Clientes</button></a>
+		<a href="/cotizacion"><button type="button" class="btn btn-secondary btn-sm">cotizacion</button></a>
+		<button type="button" class="btn btn-secondary btn-sm">Insumos</button>
+		<button type="button" class="btn btn-secondary btn-sm">Revisiones</button>
+	</nav>
+<div id="centrarTabla">
+<table class="table" id="tablaPrincipal" style="width: 80%">
+		<tr>
+		<th>TIPO</th>
+		<th>TELA</th>
+		<th>COLOR</th>
+		<th>ANCHO</th>
+		<th>ALTO</th>
+		<th>CANTIDAD</th>
+		<th>CADENA</th>
+		<th>LADO CADENA</th>
+		<th>ENVIO</th>
+		</tr>
+		<tr th:each="c : ${listaPedidos}">
+			<td th:text="${c.tipo}"></td>
+			<td th:text="${c.tela}"></td>
+			<td th:text="${c.color}"></td>
+			<td th:text="${c.ancho}"></td>
+			<td th:text="${c.alto}"></td>
+			<td th:text="${c.cantidad}"></td>
+			<td th:text="${c.tipoCadena}"></td>
+			<td th:text="${c.ladoCadena}"></td>
+			<td th:text="${c.envio}"></td>
+			<td><td> <a class="btn btn-primary" th:href="@{/delete/{id}(id=${c.id})}">Editar</a></td></td>
+			<td><td> <a class="btn btn-danger" th:href="@{/delete/{id}(id=${c.id})}">Eliminar</a></td></td>
+	</tr>
+</table>
+</div>
+</body>
+</html>

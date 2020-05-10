@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{css/index.css}"/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style>
+input{
+text-align: left;
+}
+</style>
+</head>
+	<form th:action="@{/formulario}" th:object=${usuarios} method="POST">
+	 <div class="form-group">
+    <label for="exampleInputEmail1">Nombre:</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+    		placeholder="ingrese el usuario"  name="user">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Apellido:</label>
+    <input type="password"  class="form-control" id="exampleInputPassword1" placeholder="ingrese el password"
+    			 name="password">
+  </div>
+  <button style="margin-left: 39%;" type="submit" class="btn btn-primary">Iniciar sesion</button>
+  </form>
+</body>
+</html>
