@@ -40,14 +40,14 @@ margin-left: 3%;
 		<button type="button" class="btn btn-secondary btn-sm">Insumos</button>
 		<button type="button" class="btn btn-secondary btn-sm">Revisiones</button>
 	</nav>
-<form th:action="@{/cotizador}" th:object="${pedido}" method="post">
+<form th:action="@{/coti}" th:object="${pedido}" method="post">
 	<label type="text">Tipo:</label>
 	<br>
-	<select style="width: 30%;" id="select1" name="tipo"  class="browser-default custom-select">
+	
+	<select style="width: 30%;" type="text" id="select1" name="tipo"  class="browser-default custom-select">
 		<option selected>simple</option>
 		<option value="1">doble</option>
 	</select> 
-	<input type="hidden"  name="cliente_id" ></input>
     <input style="width: 5%;" type="text" id="ancho"  name="ancho" placeholder="Ancho:">
     <input style="width: 5%;" type="text" id="alto"  name="alto" placeholder="Alto:">
     <br>

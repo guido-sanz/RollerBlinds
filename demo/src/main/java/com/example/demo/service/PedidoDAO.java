@@ -13,5 +13,5 @@ import com.example.demo.entidades.Usuarios;
 public interface PedidoDAO extends CrudRepository<Pedido, Integer> {
 
 	
-	public  List<Pedido> findBycliente_id(Integer id);
+	public  List<Pedido> findByclienteId(Integer id);
 }

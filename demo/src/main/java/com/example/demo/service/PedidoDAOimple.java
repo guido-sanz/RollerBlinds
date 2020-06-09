@@ -17,11 +17,11 @@ public class PedidoDAOimple {
 	@PersistenceContext
 	private EntityManager em;
 	
-//		public void Buscar(Integer id) {
-//		Query query = em.createQuery("insert into Pedido p = :p where p.idCliente = :id ");
-//		query.setParameter("id", id);
-//		query.setParameter("p", p);
-//	}
+		public List listarPedido(Integer id) {
+		Query query = em.createQuery("select p from p Pedido where p.cliente_id = :id");
+		query.setParameter("id", id);
+		return query.getResultList();
+	}
 	
 	
 	
