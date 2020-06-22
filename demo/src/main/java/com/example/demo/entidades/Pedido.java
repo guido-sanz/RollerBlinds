@@ -1,5 +1,7 @@
 package com.example.demo.entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,11 +13,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
-public class Pedido {
+public class Pedido implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue (strategy = GenerationType.AUTO)
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String tipo;
 	private String tela;
@@ -28,9 +35,22 @@ public class Pedido {
 	private String envio;
 	private Double total;
 	
-	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Cliente cliente;
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+
+	public Pedido() {
+		// TODO Auto-generated constructor stub
+	}
 
 
 	public Integer getId() {
@@ -113,16 +133,6 @@ public class Pedido {
 	}
 
 
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-
 	public String getTela() {
 		return tela;
 	}
@@ -150,6 +160,14 @@ public class Pedido {
 
 	public void setTotal(Double total) {
 		this.total = total;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Pedido [id=" + id + ", tipo=" + tipo + ", tela=" + tela + ", color=" + color + ", ancho=" + ancho
+				+ ", alto=" + alto + ", cantidad=" + cantidad + ", ladoCadena=" + ladoCadena + ", tipoCadena="
+				+ tipoCadena + ", envio=" + envio + ", total=" + total + ", cliente=" + cliente + "]";
 	}
 
 	

@@ -1,5 +1,6 @@
 package com.example.demo.entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +15,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-public class Cliente {
+public class Cliente implements Serializable {
 
+
+	private static final long serialVersionUID = 1L;
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nombre;
 	private String apellido;
@@ -25,20 +29,24 @@ public class Cliente {
 	private String email;
 	private String telefono;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "cliente", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Pedido> pedidos = new ArrayList<>();
-
-	public void agregarPedido(Pedido pedido) {
+	
+	public void agregaPedido(Pedido pedido) {
 		pedidos.add(pedido);
 		pedido.setCliente(this);
 	}
+	
+	public void removePedido(Pedido pedido) {
+		pedidos.remove(pedido);
+		pedido.setCliente(null);
+	}
 
-
-
+	
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", email="
-				+ email + ", telefono=" + telefono + ", pedidos=" + pedidos + "]";
+				+ email + ", telefono=" + telefono + "]";
 	}
 
 

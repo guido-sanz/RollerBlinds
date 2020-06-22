@@ -40,13 +40,14 @@ margin-left: 3%;
 		<button type="button" class="btn btn-secondary btn-sm">Insumos</button>
 		<button type="button" class="btn btn-secondary btn-sm">Revisiones</button>
 	</nav>
-<form th:action="@{/coti}" th:object="${pedido}" method="post">
+<form th:action="@{/cotizacion}" th:object="${pedido}" method="post" >
 	<label type="text">Tipo:</label>
 	<br>
-	
+	<input  type=hidden name="cliente" th:field="*{cliente}" id="id"></input>
+	<input  type=hidden name="id" th:field="*{id}" id="id"></input>
 	<select style="width: 30%;" type="text" id="select1" name="tipo"  class="browser-default custom-select">
 		<option selected>simple</option>
-		<option value="1">doble</option>
+		<option value="doble">doble</option>
 	</select> 
     <input style="width: 5%;" type="text" id="ancho"  name="ancho" placeholder="Ancho:">
     <input style="width: 5%;" type="text" id="alto"  name="alto" placeholder="Alto:">
@@ -55,44 +56,44 @@ margin-left: 3%;
     <br>
     <select style="width: 30%;" name="tela"  class="browser-default custom-select">
 		<option selected>Blackout premiun</option>
-		<option value="1">Blackout smart</option>
-		<option value="2">Screen 5% premiun</option>
-		<option value="3">Screen 5% smart</option>
+		<option value="Blackout smart">Blackout smart</option>
+		<option value="Screen 5% premiun">Screen 5% premiun</option>
+		<option value="Screen 5% smart">Screen 5% smart</option>
 	</select> 
 	<br>
 	<label for="exampleInputPassword1">Color:</label>
     <br>
 	<select style="width: 30%;" name="color"  class="browser-default custom-select">
 		<option selected>blanco</option>
-		<option value="1">gris</option>
-		<option value="2">natural</option>
-		<option value="3">negro</option>
+		<option value="gris">gris</option>
+		<option value="natural">natural</option>
+		<option value="negro">negro</option>
 	</select> 
 	<label  for="exampleInputPassword1">Cant:</label>
 	<select style="width: 5%; margin-left: 1%;" name="cantidad"  class="browser-default custom-select">
 		<option selected>1</option>
-		<option value="1">2</option>
-		<option value="2">3</option>
-		<option value="3">4</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
 	</select>
 	<label  for="exampleInputPassword1">Envio:</label>
 	<select style="width: 5%; margin-left: 1%;" name="envio"  class="browser-default custom-select">
 		<option selected>si</option>
-		<option value="1">no</option>
+		<option value="no">no</option>
 	</select>
 	<br>
 	<label for="exampleInputPassword1">Cadena:</label>
     <br>
 	<select style="width: 30%;" name="tipoCadena"  class="browser-default custom-select">
 		<option selected>Plastica</option>
-		<option value="1">Metalica</option>
+		<option value="Metalica">Metalica</option>
 	</select> 
 	<br>
 	<label for="exampleInputPassword1">Accionamiento:</label>
     <br>
 	<select style="width: 30%;" name="ladoCadena"  class="browser-default custom-select">
 		<option selected>Derecha</option>
-		<option value="1">Izquierda</option>
+		<option value="Izquierda">Izquierda</option>
 	</select>
 	<br>
 	<button type="submit" class="btn btn-primary">Guardar</button> 

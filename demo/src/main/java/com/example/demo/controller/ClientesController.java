@@ -41,10 +41,5 @@ public class ClientesController {
 		}
 		return "redirect:/Clientes";
 	}
-
-//	@GetMapping(value = "/cotizacion")
-//		public String cotizador() {
-//		return "cotizacion";
-//	}
 	
 }
