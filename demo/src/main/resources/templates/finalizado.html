@@ -6,15 +6,19 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" th:href="@{css/Clientes.css}"/>
+<style>
+	#btnActivos{
+		
+	}
+</style>
 </head>
 <body>
-<nav>
+	<nav>
 		<a href="/Clientes" ><button type="button" class="btn btn-secondary btn-sm">Clientes</button></a>
 		<a href="/cotizacion"><button type="button" class="btn btn-secondary btn-sm">cotizacion</button></a>
 		<button type="button" class="btn btn-secondary btn-sm">Insumos</button>
 		<button type="button" class="btn btn-secondary btn-sm">Revisiones</button>
 	</nav>
-		
 		<div id="centrarBuscador">
 		
 		<form th:action="@{/buscador}" th:object="${cliente}" method="post">
@@ -26,10 +30,9 @@
 		</div>
 		</form>
 		</div>	
-		<label style="margin-left: 16%" for="exampleInputPassword1">Estado:</label>
-			<a href="/finalizado" ><button type="button" class="btn btn-secondary btn-sm">Finalizados</button></a>
-			<a class="btn btn-primary" href="/agregarClientes" id="agregar" >Agregar cliente</a>
-		<div id="centrarTabla">
+		<label style="margin-left: 16%"  for="exampleInputPassword1">Estado:</label>
+			<a href="/Clientes" ><button type="button" id="btnActivos" class="btn btn-secondary btn-sm">Activos</button></a>
+	<div id="centrarTabla">
 	<table class="table" id="tablaPrincipal" style="width: 45%">
 		<tr>
 		<th>NOMBRE</th>
@@ -37,9 +40,6 @@
 		<th>DNI</th>
 		<th>EMAIL</th>
 		<th>TELEFONO</th>
-		<th></th>
-		<th></th>
-		<th></th>
 		<th></th>
 		<th></th>
 		</tr>
@@ -53,11 +53,9 @@
 			<td> <a class="btn btn-primary" th:href="@{/listaDePedidos/{id}(id=${c.id})}">ver</a></td>
 			<td> <a class="btn btn-primary" th:href="@{/delete/{id}(id=${c.id})}">Editar</a></td>
 			<td> <a class="btn btn-danger" th:href="@{/delete/{id}(id=${c.id})}">eliminar</a></td>
-			<td> <a class="btn btn-warning" th:href="@{/finalizar/{id}(id=${c.id})}">F</a></td>
 	</tr>
 	</table>
 	</div>
-	
 	
 </body>
 </html>

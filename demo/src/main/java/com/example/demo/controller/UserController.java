@@ -37,7 +37,7 @@ public class UserController {
 	public String buscarUsuario(Usuarios u, Model model) {
 		if (usuariosDAOimplet.validarUsuario(u)) {
 			model.addAttribute("list", clienteDAO.findAll());
-			return "Clientes";
+			return "redirect:/Clientes";
 		} else {
 			return "index";
 		}

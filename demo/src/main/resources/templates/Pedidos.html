@@ -43,6 +43,7 @@ text-align: center;
 		<th>CADENA</th>
 		<th>LADO CADENA</th>
 		<th>ENVIO</th>
+		<th>PRECIO ITEM</th>
 		</tr>
 		<tr th:each="c : ${listaPedidos}">
 			<td th:text="${c.tipo}"></td>
@@ -54,8 +55,8 @@ text-align: center;
 			<td th:text="${c.tipoCadena}"></td>
 			<td th:text="${c.ladoCadena}"></td>
 			<td th:text="${c.envio}"></td>
-			<td><a class="btn btn-success" th:href="@{'/cotizar/' + ${c.id}}">+</a></td>
-			<td><a class="btn btn-primary" th:href="@{/delete/{id}(id=${c.id})}">Editar</a></td>
+			<td th:text="${c.total}"></td>
+			<td><a class="btn btn-primary" th:href="@{'/cotizar/' + ${c.id}}">Editar</a></td>
 			<td> <a class="btn btn-danger" th:href="@{/deletePedidos/{id}/{cliente}(id=${c.id}, cliente=${c.cliente.id})}">Eliminar</a></td>
 	</tr>
 </table>

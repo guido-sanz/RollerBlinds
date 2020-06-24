@@ -33,6 +33,9 @@ public class PedidosController {
 
 	@Autowired
 	PedidoDAOimple dao;
+	
+	@Autowired
+	Pedido pedidoCoti;
 
 	@GetMapping("/listaDePedidos/{id}")
 	public String pedidos(@PathVariable("id") Integer id, Model model) {
@@ -67,13 +70,10 @@ public class PedidosController {
 	public String agregar3(Pedido pedido, Model model) {
 		double ancho = pedido.getAncho();
 		double alto = pedido.getAlto();
-		String tipo = pedido.getTipo();
-		if(tipo.equals("")) {
-		double precio = (ancho*(alto+30));
+		int cantidad = pedido.getCantidad();
+		String tela = pedido.getTela();
+		double precio = pedidoCoti.cotizacion(ancho, alto, cantidad, tela);
 		pedido.setTotal(precio);
-		}
-		System.out.println(ancho);
-		System.out.println(alto);
 		pedidoDAO.save(pedido);
 		return "redirect:/Clientes";
 	}

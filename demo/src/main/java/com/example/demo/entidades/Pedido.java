@@ -15,8 +15,10 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.stereotype.Component;
 
 @Entity
+@Component
 public class Pedido implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -29,7 +31,7 @@ public class Pedido implements Serializable {
 	private String color;
 	private double ancho;
 	private double alto;
-	private String cantidad;
+	private int cantidad;
 	private String ladoCadena;
 	private String tipoCadena;
 	private String envio;
@@ -93,12 +95,12 @@ public class Pedido implements Serializable {
 	}
 
 
-	public String getCantidad() {
+	public int getCantidad() {
 		return cantidad;
 	}
 
 
-	public void setCantidad(String cantidad) {
+	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
 
@@ -171,6 +173,24 @@ public class Pedido implements Serializable {
 	}
 
 	
+	public double cotizacion(double ancho, double alto, int cantidad, String tela) {
+		String tela1 = "Blackout premiun";
+		String tela2 = "Blackout smart";
+		String tela3 = "Screen 5% premiun";
+		String tela4 = "Screen 5% smart";
+		double precio = 0;
+		if(tela.equals(tela1)) {
+			 precio = (((ancho*(alto+30))/10000)*899)*cantidad;
+		}else if(tela.equals(tela2)) {
+			precio = (((ancho*(alto+30))/10000)*600)*cantidad;
+		}else if(tela.equals(tela3)) {
+			precio = (((ancho*(alto+30))/10000)*1200)*cantidad;
+		}else if(tela.equals(tela4)) {
+			precio = (((ancho*(alto+30))/10000)*950)*cantidad;
+		}
+		return precio;
+		
+	}
 	
 	
 	

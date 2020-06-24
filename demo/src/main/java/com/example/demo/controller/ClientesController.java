@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,8 +28,32 @@ public class ClientesController {
 
 	@GetMapping("/Clientes")
 	public String all(Model model) {
-		model.addAttribute("list", clienteDAO.findAll());
+		List<Cliente> listaClientes = new ArrayList<>();
+		listaClientes = clienteDAO.findAll();
+		List<Cliente> sinFinalizar = new ArrayList<>();
+		for(int i=0; i<listaClientes.size(); i++) {
+			Cliente cliente = listaClientes.get(i);
+			if(cliente.getEstado().equals("false")) {
+				sinFinalizar.add(cliente);
+			}
+		}
+		model.addAttribute("list", sinFinalizar);
 		return "Clientes";
+	}
+	
+	@GetMapping("/finalizado")
+	public String Finalizado(Model model) {
+		List<Cliente> listaClientes = new ArrayList<>();
+		listaClientes = clienteDAO.findAll();
+		List<Cliente> finalizado = new ArrayList<>();
+		for(int i=0; i<listaClientes.size(); i++) {
+			Cliente cliente = listaClientes.get(i);
+			if(cliente.getEstado().equals("true")) {
+				finalizado.add(cliente);
+			}
+		}
+		model.addAttribute("list", finalizado);
+		return "finalizado";
 	}
 
 	@GetMapping("/agregarClientes")

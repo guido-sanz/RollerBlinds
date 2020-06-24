@@ -28,6 +28,7 @@ public class Cliente implements Serializable {
 	private String dni;
 	private String email;
 	private String telefono;
+	private String estado;
 
 	@OneToMany(mappedBy = "cliente", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Pedido> pedidos = new ArrayList<>();
@@ -109,5 +110,15 @@ public class Cliente implements Serializable {
 	public void setPedidos(List<Pedido> pedidos) {
 		this.pedidos = pedidos;
 	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
+	
 
 }
