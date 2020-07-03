@@ -8,6 +8,9 @@
 <link rel="stylesheet" th:href="@{css/Clientes.css}"/>
 </head>
 <body>
+<form th:action="@{/logout}" method="post">
+            <input type="submit" value="Cerrar Sesion"/>
+        </form>
 <nav>
 		<a href="/Clientes" ><button type="button" class="btn btn-secondary btn-sm">Clientes</button></a>
 		<a href="/cotizacion"><button type="button" class="btn btn-secondary btn-sm">cotizacion</button></a>
@@ -27,11 +30,12 @@
 		</form>
 		</div>	
 		<label style="margin-left: 16%" for="exampleInputPassword1">Estado:</label>
-			<a href="/finalizado" ><button type="button" class="btn btn-secondary btn-sm">Finalizados</button></a>
+			<a href="/finalizado" ><button id="btnFinalizado" type="button" class="btn btn-secondary">Finalizados</button></a>
 			<a class="btn btn-primary" href="/agregarClientes" id="agregar" >Agregar cliente</a>
 		<div id="centrarTabla">
 	<table class="table" id="tablaPrincipal" style="width: 45%">
 		<tr>
+		<th>NRO CLIENTE</th>
 		<th>NOMBRE</th>
 		<th>APELLIDO</th>
 		<th>DNI</th>
@@ -44,6 +48,7 @@
 		<th></th>
 		</tr>
 	<tr th:each="c : ${list}" >
+			<td th:text="${c.id}"></td>
 			<td th:text="${c.nombre}"></td>
 			<td th:text="${c.apellido}"></td>
 			<td th:text="${c.dni}"></td>

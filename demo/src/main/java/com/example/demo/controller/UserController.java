@@ -28,21 +28,28 @@ public class UserController {
 	@Autowired
 	UsuariosDAO usuariosDAO;
 
-	@RequestMapping("/")
+	@RequestMapping("/formulario")
 	public String index() {
 		return "index";
 	}
-
-	@PostMapping("/formulario")
-	public String buscarUsuario(Usuarios u, Model model) {
-		if (usuariosDAOimplet.validarUsuario(u)) {
-			model.addAttribute("list", clienteDAO.findAll());
-			return "redirect:/Clientes";
-		} else {
-			return "index";
-		}
-	}
-	
+}
+//	@PostMapping("/formulario")
+//	public String buscarUsuario(Usuarios u, Model model) {
+//		if (usuariosDAOimplet.validarUsuario(u)) {
+//			model.addAttribute("list", clienteDAO.findAll());
+//			return "redirect:/Clientes";
+//		} else {
+//			return "index";
+//		}
+//	}
+//}
+//	@PostMapping("/formulario")
+//	public String buscarUsuario(Model model) {
+//		model.addAttribute("list", clienteDAO.findAll());
+//			return "redirect:/Clientes";
+//		} 
+//	}
+//	
 //	@GetMapping("/Clientes")
 //	public String clientes() {
 //		return "Clientes";
@@ -54,4 +61,4 @@ public class UserController {
 //		return "Clientes";
 //	}
 
-}
+

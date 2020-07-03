@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -29,7 +31,9 @@ public class Pedido implements Serializable {
 	private String tipo;
 	private String tela;
 	private String color;
+	@NotNull
 	private double ancho;
+	@NotNull
 	private double alto;
 	private int cantidad;
 	private String ladoCadena;

@@ -49,8 +49,14 @@ margin-left: 3%;
 		<option selected>simple</option>
 		<option value="doble">doble</option>
 	</select> 
+	<div>
     <input style="width: 5%;" type="text" id="ancho"  name="ancho" placeholder="Ancho:">
+    	<small class="form-text text-danger" th:if="${#fields.hasErrors('ancho')}" th:error="*{ancho}" th:text='error'></small>
+    </div>
+    <div>
     <input style="width: 5%;" type="text" id="alto"  name="alto" placeholder="Alto:">
+    <small class="form-text text-danger" th:if="${#fields.hasErrors('alto')}" th:error="*{alto}" th:text="error"></small>
+    </div>
     <br>
     <label for="exampleInputPassword1">Tela:</label>
     <br>
@@ -59,7 +65,8 @@ margin-left: 3%;
 		<option value="Blackout smart">Blackout smart</option>
 		<option value="Screen 5% premiun">Screen 5% premiun</option>
 		<option value="Screen 5% smart">Screen 5% smart</option>
-	</select> 
+	</select>
+
 	<br>
 	<label for="exampleInputPassword1">Color:</label>
     <br>

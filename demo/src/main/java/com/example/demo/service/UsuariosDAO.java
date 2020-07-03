@@ -12,6 +12,7 @@ import com.example.demo.entidades.Usuarios;
 public interface UsuariosDAO extends CrudRepository<Usuarios, Integer> {
 
 	public  Optional<Usuarios> findByUserAndPassword(String user, String password);
+	public  Optional<Usuarios> findByUser(String user);
 		
 	
 	

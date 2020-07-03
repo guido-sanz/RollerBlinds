@@ -34,10 +34,14 @@ text-align: left;
 
 #agregar{
 	margin-bottom: 6px;
-	margin-left: 48%;
+	margin-left: 46%;
 	
 }
 
 form{
 margin: 2% 35% 2% 35%;
+}
+
+#btnFinalizado{
+	margin-bottom: 6px;
 }
