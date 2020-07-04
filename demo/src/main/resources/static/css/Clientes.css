@@ -6,6 +6,7 @@
 nav{
 	text-align: center;
 	padding: 1%;
+
 }
 
 #centrarTabla{
@@ -17,7 +18,7 @@ nav{
 #centrarTabla table{
 	
 	margin: 0 auto;
-text-align: left;
+	text-align: center;
 	
 }
 
@@ -32,11 +33,6 @@ text-align: left;
 	
 }
 
-#agregar{
-	margin-bottom: 6px;
-	margin-left: 46%;
-	
-}
 
 form{
 margin: 2% 35% 2% 35%;
@@ -45,3 +41,12 @@ margin: 2% 35% 2% 35%;
 #btnFinalizado{
 	margin-bottom: 6px;
 }
+
+.btnSearch{
+    vertical-align:middle;
+}
+
+#botonimagen{
+  background-image:url(/img/addCliente.svg);
+}
+

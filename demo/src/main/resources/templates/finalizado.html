@@ -34,15 +34,19 @@
 			<a href="/Clientes" ><button type="button" class="btn btn-secondary btn-sm">Activos</button></a>
 	<div id="centrarTabla">
 	<table class="table" id="tablaPrincipal" style="width: 45%">
-		<tr>
-		<th>NOMBRE</th>
-		<th>APELLIDO</th>
-		<th>DNI</th>
-		<th>EMAIL</th>
-		<th>TELEFONO</th>
-		<th></th>
-		<th></th>
-		</tr>
+		<thead class="thead-dark">
+			<tr>
+			<th>#</th>
+			<th>NOMBRE</th>
+			<th>APELLIDO</th>
+			<th>DNI</th>
+			<th>EMAIL</th>
+			<th>TELEFONO</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			</tr>
+		</thead>	
 	<tr th:each="c : ${list}" >
 			<td th:text="${c.nombre}"></td>
 			<td th:text="${c.apellido}"></td>
