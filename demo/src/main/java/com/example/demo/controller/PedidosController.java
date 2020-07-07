@@ -1,8 +1,12 @@
 package com.example.demo.controller;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 
@@ -21,9 +25,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entidades.Cliente;
 import com.example.demo.entidades.Pedido;
+import com.example.demo.generadorPdf.GeneradorPdf;
 import com.example.demo.service.ClienteDAO;
 import com.example.demo.service.PedidoDAO;
 import com.example.demo.service.PedidoDAOimple;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.pdf.PdfTable;
 
 @Controller
 public class PedidosController {
@@ -39,6 +46,9 @@ public class PedidosController {
 	
 	@Autowired
 	Pedido pedidoCoti;
+	
+	@Autowired
+	GeneradorPdf pdfGenerator;
 
 	@GetMapping("/listaDePedidos/{id}")
 	public String pedidos(@PathVariable("id") Integer id, Model model) {
@@ -105,5 +115,22 @@ public class PedidosController {
 		}
 		return "redirect:/Clientes";
 	}
+	
+	@GetMapping("/descargarPDF")
+	public void descargarPDF(HttpServletResponse response) throws DocumentException, IOException {
+		response.setContentType("application/pdf");
+		String headerKey = "Content-disposition";
+		String headerValue = "ateachment; filename=pedido.pdf";
+		
+		response.setHeader(headerKey, headerValue);
+		
+		List<Pedido> listaPedido = (List<Pedido>) pedidoDAO.findAll();
+		
+		
+		
+		GeneradorPdf exporter = new GeneradorPdf(listaPedido);
+		exporter.export(response);
+	}
+	
 }
 
