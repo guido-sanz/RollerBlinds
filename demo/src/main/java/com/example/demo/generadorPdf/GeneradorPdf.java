@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.demo.entidades.Pedido;
@@ -26,6 +27,9 @@ import com.lowagie.text.pdf.PdfWriter;
 
 @Component
 public class GeneradorPdf {
+	
+	@Autowired
+	Pedido Pedidos;
 
 	private List<Pedido> listaPedido;
 
@@ -67,10 +71,12 @@ public class GeneradorPdf {
 		cell.setPhrase(new Phrase("ENVIO", font));
 		cell.setBackgroundColor(Color.BLUE);
 		table.addCell(cell);
-		cell.setPhrase(new Phrase("TOTAL"));
+		cell.setPhrase(new Phrase("Xunidad"));
 		cell.setBackgroundColor(Color.BLUE);
 		table.addCell(cell);
-		
+//		cell.setPhrase(new Phrase("TOTAL"));
+//		cell.setBackgroundColor(Color.BLUE);
+//		table1.addCell(cell);
 	}
 	
 	private void escribirTabla(PdfPTable table) {
@@ -85,10 +91,11 @@ public class GeneradorPdf {
 			table.addCell(pedidos.getTipoCadena());
 			table.addCell(pedidos.getLadoCadena());
 			table.addCell(pedidos.getEnvio());
-			table.addCell(String.valueOf(pedidos.getTotal()));
+			table.addCell("$"+String.valueOf(pedidos.getTotal()));	
 			
 		}
 		
+//		table1.addCell(String.valueOf(Pedidos.sumaPedidos(listaPedido)));
 	}
 	
 	
@@ -99,13 +106,14 @@ public class GeneradorPdf {
 		PdfWriter.getInstance(document, response.getOutputStream());
 		
 		document.open();
-		
-//		document.add(new Paragraph("lista de operaciones"));
+
 		
 		PdfPTable table = new PdfPTable(10);
+		
 		table.setWidthPercentage(100);
 		estructuraTabla(table);
 		escribirTabla(table);
+
 		
 		document.add(table);
 		

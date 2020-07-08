@@ -52,8 +52,19 @@ public class PedidosController {
 
 	@GetMapping("/listaDePedidos/{id}")
 	public String pedidos(@PathVariable("id") Integer id, Model model) {
+		double sumaPedidos = 0;
+		List<Pedido> p = pedidoDAO.findByclienteId(id);
 		if (id != null) {
-			model.addAttribute("listaPedidos", pedidoDAO.findByclienteId(id));
+			model.addAttribute("listaPedidos", p);
+			
+			for(Pedido pedidos : p) {
+				if(pedidos.getTotal() != null) {
+				sumaPedidos = sumaPedidos + pedidos.getTotal();
+				}else {
+					sumaPedidos = 0;
+				}
+			}
+			model.addAttribute("sumaPedidos", ((double)Math.round(sumaPedidos * 100d) / 100d));
 		}
 		return "Pedidos";
 	}
@@ -65,6 +76,7 @@ public class PedidosController {
 			if (c.isPresent()) {
 				Cliente cliente = c.get();
 				Pedido p = new Pedido();
+				p.setTotal(0.0);
 				cliente.agregaPedido(p);
 				clientedao.save(cliente);
 			}
@@ -116,21 +128,25 @@ public class PedidosController {
 		return "redirect:/Clientes";
 	}
 	
-	@GetMapping("/descargarPDF")
-	public void descargarPDF(HttpServletResponse response) throws DocumentException, IOException {
+	@GetMapping("/descargarPDF/{id}")
+	public void descargarPDF(HttpServletResponse response, @PathVariable("id") Integer id) throws DocumentException, IOException {
+		
 		response.setContentType("application/pdf");
 		String headerKey = "Content-disposition";
 		String headerValue = "ateachment; filename=pedido.pdf";
 		
 		response.setHeader(headerKey, headerValue);
 		
-		List<Pedido> listaPedido = (List<Pedido>) pedidoDAO.findAll();
+		List<Pedido> listaPedido = pedidoDAO.findByclienteId(id);
+		System.out.println(listaPedido.toString());
 		
 		
 		
 		GeneradorPdf exporter = new GeneradorPdf(listaPedido);
 		exporter.export(response);
 	}
+	
+	
 	
 }
 

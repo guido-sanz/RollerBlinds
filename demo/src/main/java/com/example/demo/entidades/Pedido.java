@@ -1,6 +1,8 @@
 package com.example.demo.entidades;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -18,6 +20,8 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.stereotype.Component;
+
+import com.lowagie.text.pdf.PdfPCell;
 
 @Entity
 @Component
@@ -178,6 +182,7 @@ public class Pedido implements Serializable {
 
 	
 	public double cotizacion(double ancho, double alto, int cantidad, String tela) {
+		DecimalFormat df = new DecimalFormat("#.00");
 		String tela1 = "Blackout premiun";
 		String tela2 = "Blackout smart";
 		String tela3 = "Screen 5% premiun";
@@ -192,11 +197,17 @@ public class Pedido implements Serializable {
 		}else if(tela.equals(tela4)) {
 			precio = (((ancho*(alto+30))/10000)*950)*cantidad;
 		}
-		return precio;
+		return ((double)Math.round(precio * 100d) / 100d);
 		
 	}
 	
-	
-	
-	
+	public double sumaPedidos(List<Pedido> pedidos) {
+		double sumaPedidos = 0;
+		
+		for(Pedido p : pedidos) {
+			sumaPedidos = sumaPedidos + p.getTotal();
+		}
+		return sumaPedidos;
+
+	}
 }

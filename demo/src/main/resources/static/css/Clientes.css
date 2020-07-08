@@ -24,7 +24,10 @@ nav{
 
 #centrarBuscador {
 	text-align: center;
-	padding: 1%;
+	margin-left: 237px;
+	margin-bottom: 3px;
+	margin-top: 3px;
+	
 }
 
 #btnBuscar{
@@ -48,5 +51,12 @@ margin: 2% 35% 2% 35%;
 
 #botonimagen{
   background-image:url(/img/addCliente.svg);
+}
+
+#btnLogout{
+	
+	margin-bottom: 2px;
+	margin-top: 2px;
+	margin-left: 60%;
 }
 

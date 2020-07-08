@@ -56,10 +56,10 @@ th, td {
 				<th>CADENA</th>
 				<th>ACC</th>
 				<th>ENVIO</th>
-				<th>TOTAL</th>
+				<th>ITEM</th>
 				<th></th>
 				<th></th>
-				<th></th>
+				<th th:text="${'$'}  + ${sumaPedidos}"></th>
 			</tr>
 			<tr th:each="c : ${listaPedidos}">
 				<td th:text="${c.tipo}"></td>
@@ -72,10 +72,12 @@ th, td {
 				<td th:text="${c.ladoCadena}"></td>
 				<td th:text="${c.envio}"></td>
 				<td th:text="${'$'} + ${c.total}"></td>
-				<td><a class='fas fa-pen' style='font-size:28px;color:#4D7B99' atl="Editar"
+				<td><a class='far fa-edit' style='font-size:28px;color:#4D7B99' atl="Editar"
 					th:href="@{'/cotizar/' + ${c.id}}"></a></td>
+					
 				<td><a class='fas fa-download' style="font-size:28px;color:#4D7B99"
-					th:href="@{/descargarPDF}"></a></td>
+					th:href="@{/descargarPDF/{id}(id=${c.cliente.id})}"></a></td>
+					
 				<td><a class='fas fa-trash-alt' style='font-size:28px;color:#E31515'
 					th:href="@{/deletePedidos/{id}/{cliente}(id=${c.id}, cliente=${c.cliente.id})}"></a></td>
 					
