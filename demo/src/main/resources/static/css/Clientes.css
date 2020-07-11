@@ -1,0 +1,62 @@
+
+.buscar{
+	width: 10%;
+}
+
+nav{
+	text-align: center;
+	padding: 1%;
+
+}
+
+#centrarTabla{
+	
+	text-align: center;
+	
+}
+
+#centrarTabla table{
+	
+	margin: 0 auto;
+	text-align: center;
+	
+}
+
+#centrarBuscador {
+	text-align: center;
+	margin-left: 237px;
+	margin-bottom: 3px;
+	margin-top: 3px;
+	
+}
+
+#btnBuscar{
+	margin-top: 1%;
+	margin-left: 22%;
+	
+}
+
+
+form{
+margin: 2% 35% 2% 35%;
+}
+
+#btnFinalizado{
+	margin-bottom: 6px;
+}
+
+.btnSearch{
+    vertical-align:middle;
+}
+
+#botonimagen{
+  background-image:url(/img/addCliente.svg);
+}
+
+#btnLogout{
+	
+	margin-bottom: 2px;
+	margin-top: 2px;
+	margin-left: 60%;
+}
+

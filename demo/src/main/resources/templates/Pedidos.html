@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<style>
+nav {
+	text-align: center;
+	padding: 1%;
+}
+
+#centrarTabla {
+	text-align: center;
+}
+
+#centrarTabla table {
+	margin: 0 auto;
+	text-align: left;
+}
+
+th, td {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark"
+		style="margin-bottom: 15px">
+		<a class="navbar-brand" href="#">Logo</a>
+		<ul class="navbar-nav">
+			<li class="nav-item active"><a class="nav-link" href="/Clientes">Clientes</a>
+			</li>
+			<li class="nav-item"><a class="nav-link" href="#">Insumos</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Administracion</a>
+			</li>
+			<li class="nav-item"><a class="nav-link" href="/Clientes">Activos</a>
+			</li>
+		</ul>
+	</nav>
+	<div id="centrarTabla">
+		<table class="table" id="tablaPrincipal" style="width: 80%">
+		<thead class="thead-dark">
+			<tr>
+				<th>TIPO</th>
+				<th>TELA</th>
+				<th>COLOR</th>
+				<th>ANCHO</th>
+				<th>ALTO</th>
+				<th>CANTIDAD</th>
+				<th>CADENA</th>
+				<th>ACC</th>
+				<th>ENVIO</th>
+				<th>ITEM</th>
+				<th></th>
+				<th></th>
+				<th th:text="${'$'}  + ${sumaPedidos}"></th>
+			</tr>
+			<tr th:each="c : ${listaPedidos}">
+				<td th:text="${c.tipo}"></td>
+				<td th:text="${c.tela}"></td>
+				<td th:text="${c.color}"></td>
+				<td th:text="${c.ancho} + ${'cm'}"></td>
+				<td th:text="${c.alto} + ${'cm'}"></td>
+				<td th:text="${c.cantidad}"></td>
+				<td th:text="${c.tipoCadena}"></td>
+				<td th:text="${c.ladoCadena}"></td>
+				<td th:text="${c.envio}"></td>
+				<td th:text="${'$'} + ${c.total}"></td>
+				<td><a class='far fa-edit' style='font-size:28px;color:#4D7B99' atl="Editar"
+					th:href="@{'/cotizar/' + ${c.id}}"></a></td>
+					
+				<td><a class='fas fa-download' style="font-size:28px;color:#4D7B99"
+					th:href="@{/descargarPDF/{id}(id=${c.cliente.id})}"></a></td>
+					
+				<td><a class='fas fa-trash-alt' style='font-size:28px;color:#E31515'
+					th:href="@{/deletePedidos/{id}/{cliente}(id=${c.id}, cliente=${c.cliente.id})}"></a></td>
+					
+			</tr>
+			</thead>
+		</table>
+	</div>
+</body>
+</html>

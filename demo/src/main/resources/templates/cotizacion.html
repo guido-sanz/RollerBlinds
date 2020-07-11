@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<style>
+nav {
+	text-align: center;
+	padding: 1%;
+}
+select{
+margin-bottom: 1%;
+margin-left: 3%;
+}
+#ancho{
+height: 36px;
+}
+#select1{
+margin-top: 7px;
+}
+#alto{
+height: 36px;
+}
+label{
+margin-left: 3%;
+}
+
+</style>
+</head>
+<body>
+	<nav>
+		<a href="/Clientes"><button type="button"
+				class="btn btn-secondary btn-sm">Clientes</button></a> <a
+			href="/cotizacion"><button type="button"
+				class="btn btn-secondary btn-sm">cotizacion</button></a>
+		<button type="button" class="btn btn-secondary btn-sm">Insumos</button>
+		<button type="button" class="btn btn-secondary btn-sm">Revisiones</button>
+	</nav>
+<form th:action="@{/cotizacion}" th:object="${pedido}" method="post" >
+	<label type="text">Tipo:</label>
+	<br>
+	<input  type=hidden name="cliente" th:field="*{cliente}" id="id"></input>
+	<input  type=hidden name="id" th:field="*{id}" id="id"></input>
+	<select style="width: 30%;" type="text" id="select1" name="tipo"  class="browser-default custom-select">
+		<option selected>simple</option>
+		<option value="doble">doble</option>
+	</select> 
+	<div>
+    <input style="width: 5%;" type="text" id="ancho"  name="ancho" placeholder="Ancho:">
+    	<small class="form-text text-danger" th:if="${#fields.hasErrors('ancho')}" th:error="*{ancho}" th:text='error'></small>
+    </div>
+    <div>
+    <input style="width: 5%;" type="text" id="alto"  name="alto" placeholder="Alto:">
+    <small class="form-text text-danger" th:if="${#fields.hasErrors('alto')}" th:error="*{alto}" th:text="error"></small>
+    </div>
+    <br>
+    <label for="exampleInputPassword1">Tela:</label>
+    <br>
+    <select style="width: 30%;" name="tela"  class="browser-default custom-select">
+		<option selected>Blackout premiun</option>
+		<option value="Blackout smart">Blackout smart</option>
+		<option value="Screen 5% premiun">Screen 5% premiun</option>
+		<option value="Screen 5% smart">Screen 5% smart</option>
+	</select>
+
+	<br>
+	<label for="exampleInputPassword1">Color:</label>
+    <br>
+	<select style="width: 30%;" name="color"  class="browser-default custom-select">
+		<option selected>blanco</option>
+		<option value="gris">gris</option>
+		<option value="natural">natural</option>
+		<option value="negro">negro</option>
+	</select> 
+	<label  for="exampleInputPassword1">Cant:</label>
+	<select style="width: 5%; margin-left: 1%;" name="cantidad"  class="browser-default custom-select">
+		<option selected>1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+	</select>
+	<label  for="exampleInputPassword1">Envio:</label>
+	<select style="width: 5%; margin-left: 1%;" name="envio"  class="browser-default custom-select">
+		<option selected>si</option>
+		<option value="no">no</option>
+	</select>
+	<br>
+	<label for="exampleInputPassword1">Cadena:</label>
+    <br>
+	<select style="width: 30%;" name="tipoCadena"  class="browser-default custom-select">
+		<option selected>Plastica</option>
+		<option value="Metalica">Metalica</option>
+	</select> 
+	<br>
+	<label for="exampleInputPassword1">Accionamiento:</label>
+    <br>
+	<select style="width: 30%;" name="ladoCadena"  class="browser-default custom-select">
+		<option selected>Derecha</option>
+		<option value="Izquierda">Izquierda</option>
+	</select>
+	<br>
+	<button type="submit" class="btn btn-primary">Guardar</button> 
+</form>	
+	
+</body>
+</html>
