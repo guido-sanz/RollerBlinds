@@ -7,25 +7,26 @@
 <link rel="stylesheet" th:href="@{css/index.css}"/>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <style>
-input{
-text-align: left;
-}
+/* input{ */
+/* text-align: left; */
+/* } */
+/* form{ */
+/* margin: 2% 33% 10% 33%; */
+/* } */
 </style>
 </head>
-	<form th:action="@{/formulario}" th:object=${usuarios} method="POST">
-	 <div class="form-group">
-    <label for="exampleInputEmail1">Nombre de usuario:</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
-    		placeholder="ingrese el usuario"  name="user">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password:</label>
-    <input type="password"  class="form-control" id="exampleInputPassword1" placeholder="ingrese el password"
-    			 name="password">
-  </div>
-  <button style="margin-left: 39%;" type="submit" class="btn btn-primary">Iniciar sesion</button>
+
+<div class="login">
+  <div class="login-triangle"></div>
+  
+  <h2 class="login-header">Bienvenido</h2>
+
+  <form th:action="@{/formulario}" th:object=${usuarios} method="POST" class="login-container">
+    <p><input type="text" placeholder="Usuario" name="user"></p>
+    <p><input type="password" placeholder="Password" name="password"></p>
+    <p><input type="submit" value="Iniciar sesion"></p>
   </form>
-  </div>
+</div>
                 <div th:if="${param.error}" class="alert alert-danger" role="alert">
 		           Usuario y password invalidos
 		        </div>

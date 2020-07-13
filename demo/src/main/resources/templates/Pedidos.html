@@ -14,34 +14,40 @@ nav {
 	text-align: center;
 	padding: 1%;
 }
-
 #centrarTabla {
 	text-align: center;
 }
-
 #centrarTabla table {
 	margin: 0 auto;
 	text-align: left;
 }
-
 th, td {
 	text-align: center;
+}
+#btnLogout{
+	margin-bottom: 2px;
+	margin-top: 2px;
+	margin-left: 75%;
 }
 </style>
 </head>
 <body>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark"
 		style="margin-bottom: 15px">
-		<a class="navbar-brand" href="#">Logo</a>
+		<a class='fas fa-house-user' style='font-size:30px;  color: #25ABE1' href="#"></a>
 		<ul class="navbar-nav">
 			<li class="nav-item active"><a class="nav-link" href="/Clientes">Clientes</a>
 			</li>
-			<li class="nav-item"><a class="nav-link" href="#">Insumos</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Administracion</a>
-			</li>
+<!-- 			<li class="nav-item"><a class="nav-link" href="#">Insumos</a></li> -->
+<!-- 			<li class="nav-item"><a class="nav-link" href="#">Administracion</a> -->
+<!-- 			</li> -->
 			<li class="nav-item"><a class="nav-link" href="/Clientes">Activos</a>
 			</li>
 		</ul>
+			<form id="btnLogout" th:action="@{/logout}" method="post">
+			<input class="btn btn-outline-secondary" type="submit"
+				value="Cerrar Sesion" />
+		</form>
 	</nav>
 	<div id="centrarTabla">
 		<table class="table" id="tablaPrincipal" style="width: 80%">

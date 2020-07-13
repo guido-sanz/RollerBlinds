@@ -1,0 +1,54 @@
+nav {
+	text-align: center;
+	padding: 1%;
+}
+
+select {
+	margin-bottom: 1%;
+}
+
+#ancho {
+	height: 36px;
+}
+
+#select1 {
+	margin-top: 7px;
+}
+
+#alto {
+	height: 36px;
+}
+
+label {
+	margin-left: 3%;
+	font-weight: bold;
+}
+.medidas{
+	width: 1%;
+	margin-left: 3%;
+}
+
+#btnLogout{
+		margin-bottom: 2px;
+		margin-top: 2px;
+		margin-left: 75%;
+		
+}
+
+.select{
+	margin-left: 3%;
+	margin-bottom: 1%;
+	width: 30%;
+}
+
+#btnGuardar{
+	margin-top: 4px;
+}
+
+.cantYenvio{
+	width: 5%;
+	margin-left: 3%;
+}
+
+
+

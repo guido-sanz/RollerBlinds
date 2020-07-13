@@ -13,8 +13,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+
+import org.springframework.stereotype.Component;
+
+import com.sun.istack.NotNull;
 
 @Entity
+@Component
 public class Cliente implements Serializable {
 
 
@@ -23,10 +29,16 @@ public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@NotNull
 	private String nombre;
+	@NotNull
 	private String apellido;
+	@NotNull
 	private String dni;
+//	@Pattern(regexp="")
+	@NotNull
 	private String email;
+	@NotNull
 	private String telefono;
 	private String estado;
 

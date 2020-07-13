@@ -35,7 +35,7 @@ public class Pedido implements Serializable {
 	private String tipo;
 	private String tela;
 	private String color;
-	@NotNull
+	@NotNull(message = "campo requerido")
 	private double ancho;
 	@NotNull
 	private double alto;

@@ -3,108 +3,124 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/cotizacion.css}" />
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
-<style>
-nav {
-	text-align: center;
-	padding: 1%;
-}
-select{
-margin-bottom: 1%;
-margin-left: 3%;
-}
-#ancho{
-height: 36px;
-}
-#select1{
-margin-top: 7px;
-}
-#alto{
-height: 36px;
-}
-label{
-margin-left: 3%;
-}
 
-</style>
 </head>
 <body>
-	<nav>
-		<a href="/Clientes"><button type="button"
-				class="btn btn-secondary btn-sm">Clientes</button></a> <a
-			href="/cotizacion"><button type="button"
-				class="btn btn-secondary btn-sm">cotizacion</button></a>
-		<button type="button" class="btn btn-secondary btn-sm">Insumos</button>
-		<button type="button" class="btn btn-secondary btn-sm">Revisiones</button>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark"
+		style="margin-bottom: 15px">
+		<a class='fas fa-house-user' style='font-size:30px;  color: #25ABE1' href="#"></a>
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" href="/Clientes">Clientes</a>
+			</li>
+<!-- 			<li class="nav-item"><a class="nav-link" href="#">Insumos</a></li> -->
+<!-- 			<li class="nav-item"><a class="nav-link" href="#">Administracion</a> -->
+<!-- 			</li> -->
+			<li class="nav-item"><a class="nav-link" href="/finalizado">Finalizados</a>
+			</li>
+		</ul>
+		<form id="btnLogout" th:action="@{/logout}" method="post">
+			<input class="btn btn-outline-secondary" type="submit"
+				value="Cerrar Sesion" />
+		</form>
 	</nav>
-<form th:action="@{/cotizacion}" th:object="${pedido}" method="post" >
-	<label type="text">Tipo:</label>
-	<br>
-	<input  type=hidden name="cliente" th:field="*{cliente}" id="id"></input>
-	<input  type=hidden name="id" th:field="*{id}" id="id"></input>
-	<select style="width: 30%;" type="text" id="select1" name="tipo"  class="browser-default custom-select">
-		<option selected>simple</option>
-		<option value="doble">doble</option>
-	</select> 
-	<div>
-    <input style="width: 5%;" type="text" id="ancho"  name="ancho" placeholder="Ancho:">
-    	<small class="form-text text-danger" th:if="${#fields.hasErrors('ancho')}" th:error="*{ancho}" th:text='error'></small>
-    </div>
-    <div>
-    <input style="width: 5%;" type="text" id="alto"  name="alto" placeholder="Alto:">
-    <small class="form-text text-danger" th:if="${#fields.hasErrors('alto')}" th:error="*{alto}" th:text="error"></small>
-    </div>
-    <br>
-    <label for="exampleInputPassword1">Tela:</label>
-    <br>
-    <select style="width: 30%;" name="tela"  class="browser-default custom-select">
-		<option selected>Blackout premiun</option>
-		<option value="Blackout smart">Blackout smart</option>
-		<option value="Screen 5% premiun">Screen 5% premiun</option>
-		<option value="Screen 5% smart">Screen 5% smart</option>
-	</select>
+	<form th:action="@{/cotizacion}" th:object="${pedido}" method="post">
+		<label type="text">Tipo:</label> <br> <input type=hidden
+			name="cliente" th:field="*{cliente}" id="id"></input> <input
+			type=hidden name="id" th:field="*{id}" id="id"></input>
+			<div class="select">
+			<select
+			 type="text" id="select1" name="tipo"
+			class="browser-default custom-select">
+			<option selected>simple</option>
+			<option value="doble">doble</option>
+		</select>
+		</div>
+		<div class="medidas">
+		<label for="exampleInputPassword1">Ancho:</label>
+				<input  type="text"  id="ancho" name="ancho"
+				placeholder="Ancho:"><small class="form-text text-danger"
+				th:if="${#fields.hasErrors('ancho')}" th:error="*{ancho}"
+				th:text="campo + ' ' + requerido"></small>
+		</div>
+		<div class="medidas">
+		<label for="exampleInputPassword1">Ancho:</label>
+				<input   type="text" id="alto" name="alto"
+				placeholder="Alto:"> <small class="form-text text-danger"
+				th:if="${#fields.hasErrors('alto')}" th:error="*{alto}"
+				th:text="campo + ' ' + requerido"></small>
+		</div>
+		<br> <label for="exampleInputPassword1">Tela:</label> <br>
+			<div class="select">
+			 <select
+			 name="tela" class="browser-default custom-select">
+			<option selected>Blackout premiun</option>
+			<option value="Blackout smart">Blackout smart</option>
+			<option value="Screen 5% premiun">Screen 5% premiun</option>
+			<option value="Screen 5% smart">Screen 5% smart</option>
+		</select> 
+		</div>
+		<br> 
+		<label for="exampleInputPassword1">Color:</label>
+		 <br>	
+		 <div class="select">
+		<select  name="color"
+			class="browser-default custom-select">
+			<option selected>blanco</option>
+			<option value="gris">gris</option>
+			<option value="natural">natural</option>
+			<option value="negro">negro</option>
+		</select> 
+		</div>
+		<label for="exampleInputPassword1">Cant:</label>
+		<div class="cantYenvio">
+		<select
+			 name="cantidad"
+			class="browser-default custom-select">
+			<option selected>1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+		</select> 
+		</div>
+		<label class="labelNombre" for="exampleInputPassword1">Envio:</label>
+		<div class="cantYenvio">
+		<select
+			 name="envio"
+			class="browser-default custom-select">
+			<option selected>si</option>
+			<option value="no">no</option>
+		</select> 
+		</div>
+		<br> 
+		<label for="exampleInputPassword1">Cadena:</label> 
+		<br>
+		<div class="select">
+		<select  name="tipoCadena"
+			class="browser-default custom-select">
+			<option selected>Plastica</option>
+			<option value="Metalica">Metalica</option>
+		</select> 
+		</div>
+		<br> 
+		<label for="exampleInputPassword1">Accionamiento:</label> 
+		<br>
+		<div class="select">
+		<select name="ladoCadena"
+			class="browser-default custom-select">
+			<option selected>Derecha</option>
+			<option value="Izquierda">Izquierda</option>
+		</select> <br>
+		</div>
+		<div class="select">
+		<button id="btnGuardar" type="submit" class="btn btn-primary">Guardar</button>
+		</div>
+	</form>
 
-	<br>
-	<label for="exampleInputPassword1">Color:</label>
-    <br>
-	<select style="width: 30%;" name="color"  class="browser-default custom-select">
-		<option selected>blanco</option>
-		<option value="gris">gris</option>
-		<option value="natural">natural</option>
-		<option value="negro">negro</option>
-	</select> 
-	<label  for="exampleInputPassword1">Cant:</label>
-	<select style="width: 5%; margin-left: 1%;" name="cantidad"  class="browser-default custom-select">
-		<option selected>1</option>
-		<option value="2">2</option>
-		<option value="3">3</option>
-		<option value="4">4</option>
-	</select>
-	<label  for="exampleInputPassword1">Envio:</label>
-	<select style="width: 5%; margin-left: 1%;" name="envio"  class="browser-default custom-select">
-		<option selected>si</option>
-		<option value="no">no</option>
-	</select>
-	<br>
-	<label for="exampleInputPassword1">Cadena:</label>
-    <br>
-	<select style="width: 30%;" name="tipoCadena"  class="browser-default custom-select">
-		<option selected>Plastica</option>
-		<option value="Metalica">Metalica</option>
-	</select> 
-	<br>
-	<label for="exampleInputPassword1">Accionamiento:</label>
-    <br>
-	<select style="width: 30%;" name="ladoCadena"  class="browser-default custom-select">
-		<option selected>Derecha</option>
-		<option value="Izquierda">Izquierda</option>
-	</select>
-	<br>
-	<button type="submit" class="btn btn-primary">Guardar</button> 
-</form>	
-	
 </body>
 </html>
